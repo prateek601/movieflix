@@ -6,6 +6,7 @@ import 'package:movieflix/MovieClass.dart';
 import 'package:optimized_cached_image/optimized_cached_image.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MaterialApp(
     home: MyApp(),
