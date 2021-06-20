@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:movieflix/MovieClass.dart';
 import 'package:optimized_cached_image/optimized_cached_image.dart';
 
 void main() {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MaterialApp(
     home: MyApp(),
   ));
@@ -46,8 +48,11 @@ class _MyAppState extends State<MyApp> {
 
           print('bottom');
           if(response!=null){
-            pageNo++;
-            getData();
+            if(modelClass.hasNext){
+              pageNo++;
+              getData();
+            }
+
           }
 
         }
@@ -126,9 +131,11 @@ class _MyAppState extends State<MyApp> {
                                 padding: const EdgeInsets.only(left: 20, bottom: 20),
                                 child: Text(
                                   moviesList[index].title,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontSize: 24,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w700,
                                       color: Colors.white),
                                 ),
                               ),
