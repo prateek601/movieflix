@@ -41,16 +41,19 @@ class Datum {
     required this.id,
     required this.title,
     required this.backdrop,
+    required this.userReaction
   });
 
   int id;
   String title;
   String backdrop;
+  int userReaction;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
     id: json["id"],
     title: json["title"],
     backdrop: json["backdrop"],
+    userReaction: 0
   );
 
   Map<String, dynamic> toJson() => {
